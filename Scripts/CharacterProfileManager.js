@@ -7,26 +7,19 @@ function createSelectElement() {
     
     // Crear el elemento select
     const select = document.createElement('select');
-    
-    // Añadir algunas opciones de ejemplo
-    const options = [
-        { value: 'opcion1', text: 'Opción 1' },
-        { value: 'opcion2', text: 'Opción 2' },
-        { value: 'opcion3', text: 'Opción 3' }
-    ];
 
-    // Iterar sobre las opciones y añadirlas al select
-    options.forEach(option => {
+    // Encontrar todos los enlaces que contienen nombres de personajes
+    const characterLinks = document.querySelectorAll('a[href*="/Personajes/"]');
+    characterLinks.forEach(link => {
         const optionElement = document.createElement('option');
-        optionElement.value = option.value;
-        optionElement.textContent = option.text;
+        optionElement.value = link.href;
+        optionElement.textContent = link.textContent.trim();
         select.appendChild(optionElement);
     });
-    
+
     // Añadir el select al div
     selectDiv.appendChild(select);
 }
 
 // Llamar a la función cuando se cargue el script
 window.addEventListener('DOMContentLoaded', createSelectElement);
-
