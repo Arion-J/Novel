@@ -1,2 +1,2 @@
-## Novela cooperativa
+# Novela cooperativa
 ### En fase alfa
