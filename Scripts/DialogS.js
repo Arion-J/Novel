@@ -1,5 +1,7 @@
-// DialogS.js
-// La idea es hacer algo como
-// Nombre del personaje está feliz a la derecha
-// Nombre del personaje se desliza a la izquierda
-// Nombre del personaje está serio en el centro
+class Dialogo {
+    constructor(personaje, posicion, emocion, mensaje) {
+        this.personaje = personaje;
+        this.posicion = posicion;
+        this.emocion = emocion;
+        this.mensaje = mensaje;
+    }
