@@ -1,25 +1,28 @@
 // CharacterProfileManager.js
 
-// Función para crear un elemento select y añadirlo al div con id "selectpj"
-function createSelectElement() {
-    // Obtener el div donde se añadirá el select
-    const selectDiv = document.getElementById('selectpj');
-    
-    // Crear el elemento select
-    const select = document.createElement('select');
+// Función para obtener las carpetas dentro de la carpeta Personajes
+function obtenerCarpetasPersonajes() {
+    // Array para almacenar los nombres de las carpetas
+    const carpetas = [];
 
-    // Encontrar todos los enlaces que contienen nombres de personajes
-    const characterLinks = document.querySelectorAll('a[href*="/Personajes/"]');
-    characterLinks.forEach(link => {
-        const optionElement = document.createElement('option');
-        optionElement.value = link.href;
-        optionElement.textContent = link.textContent.trim();
-        select.appendChild(optionElement);
+    // Encontrar todos los enlaces que apuntan a carpetas dentro de la carpeta Personajes
+    const enlacesCarpetas = document.querySelectorAll('a[href^="/Novel/Personajes/"]');
+    enlacesCarpetas.forEach(enlace => {
+        // Obtener la parte de la URL después de "/Personajes/"
+        const ruta = enlace.getAttribute('href').substring('/Novel/Personajes/'.length);
+        // Obtener el nombre de la carpeta
+        const nombreCarpeta = ruta.split('/')[0];
+        // Añadir el nombre de la carpeta al array si no está presente
+        if (!carpetas.includes(nombreCarpeta)) {
+            carpetas.push(nombreCarpeta);
+        }
     });
 
-    // Añadir el select al div
-    selectDiv.appendChild(select);
+    return carpetas;
 }
 
-// Llamar a la función cuando se cargue el script
-window.addEventListener('DOMContentLoaded', createSelectElement);
+// Llamar a la función para obtener las carpetas cuando se cargue el script
+window.addEventListener('DOMContentLoaded', function() {
+    const carpetas = obtenerCarpetasPersonajes();
+    console.log('Carpetas dentro de Personajes:', carpetas);
+});
