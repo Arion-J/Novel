@@ -46,14 +46,18 @@ export default class CharacterProfileManager {
   }
 
   // Método para obtener solo los nombres de los personajes
-  getCharacterNames() {
+export default class CharacterNames() {
     return this.characters;
   }
 }
 
-// Método para obtener los nombres de los personajes
-export async function getCharacterNames(repoUrl) {
-  const response = await fetch(repoUrl);
-  const folders = (await response.json()).filter(item => item.type === 'dir');
-  return folders.map(folder => folder.name);
-}
+// Asegurarse de que el DOM esté completamente cargado antes de inicializar la clase
+document.addEventListener('DOMContentLoaded', () => {
+  const repoUrl = 'https://api.github.com/repos/arion-j/Novel/contents/Personajes';
+  const characterProfileManager = new CharacterProfileManager('selectpj', 'resumepj', repoUrl);
+  characterProfileManager.init();
+
+  // Obtener los nombres de los personajes
+  const characterNames = characterProfileManager.getCharacterNames();
+  console.log(characterNames);
+});
