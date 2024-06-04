@@ -1,4 +1,4 @@
-import { getCharacterNames } from 'Scripts/CharacterProfileManager.js';
+import { getCharacterNames } from '/Scripts/CharacterProfileManager.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const repoUrl = 'https://api.github.com/repos/arion-j/Novel/contents/Personajes';
