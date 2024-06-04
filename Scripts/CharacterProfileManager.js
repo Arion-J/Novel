@@ -1,34 +1,44 @@
 class CharacterProfileManager {
-  constructor(repoUrl, selectElementId, resumeElementId) {
+  constructor(selectElementId, resumeElementId, repoUrl) {
     this.repoUrl = repoUrl;
     this.selectElement = document.getElementById(selectElementId);
     this.resumeElement = document.getElementById(resumeElementId);
     this.characters = [];
   }
 
+  // Método para inicializar la carga de personajes y configurar el evento del selector
   async init() {
-    await this.fetchCharacterFolders();
-    this.populateSelectElement();
+    await this.loadCharacterFolders();
     if (this.characters.length > 0) {
-      await this.loadCharacterContent(this.characters[0]);
+      this.loadCharacterContent(this.characters[0]);
     }
-    this.selectElement.addEventListener('change', (event) => {
-      this.loadCharacterContent(event.target.value);
-    });
+    this.setupSelectEvent();
   }
 
-  async fetchCharacterFolders() {
+  // Método para cargar las carpetas de personajes desde el repositorio
+  async loadCharacterFolders() {
     const response = await fetch(this.repoUrl);
     const folders = (await response.json()).filter(item => item.type === 'dir');
     this.characters = folders.map(folder => folder.name);
+
+    this.populateSelectElement();
   }
 
+  // Método para llenar el elemento select con los nombres de los personajes
   populateSelectElement() {
     this.characters.forEach(characterName => {
       this.selectElement.add(new Option(characterName, characterName));
     });
   }
 
+  // Método para configurar el evento change del elemento select
+  setupSelectEvent() {
+    this.selectElement.addEventListener('change', ({ target: { value } }) => {
+      this.loadCharacterContent(value);
+    });
+  }
+
+  // Método para cargar el contenido de un personaje específico
   async loadCharacterContent(characterName) {
     const characterContentUrl = `https://arion-j.github.io/Novel/Personajes/${characterName}/`;
     const contentResponse = await fetch(characterContentUrl);
@@ -36,9 +46,7 @@ class CharacterProfileManager {
   }
 }
 
-// Usage
+// Crear una instancia de la clase y inicializarla
 const repoUrl = 'https://api.github.com/repos/arion-j/Novel/contents/Personajes';
-const selectElementId = 'selectpj';
-const resumeElementId = 'resumepj';
-const characterProfileManager = new CharacterProfileManager(repoUrl, selectElementId, resumeElementId);
+const characterProfileManager = new CharacterProfileManager('selectpj', 'resumepj', repoUrl);
 characterProfileManager.init();
