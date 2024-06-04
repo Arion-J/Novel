@@ -1,4 +1,4 @@
-export default class CharacterProfileManager {
+class CharacterProfileManager {
   constructor(selectElementId, resumeElementId, repoUrl) {
     this.repoUrl = repoUrl;
     this.selectElement = document.getElementById(selectElementId);
@@ -46,7 +46,7 @@ export default class CharacterProfileManager {
   }
 
   // Método para obtener solo los nombres de los personajes
-export default class CharacterNames() {
+  getCharacterNames() {
     return this.characters;
   }
 }
