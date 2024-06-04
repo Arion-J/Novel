@@ -1,4 +1,4 @@
-import characterProfileManager from './CharacterProfileManager.js';
+import characterProfileManager from 'https://arion-j.github.io/Novel/Scripts/CharacterProfileManager.js';
 
 // Muestra los nombres de los personajes en la consola
 function showCharacterNames() {
