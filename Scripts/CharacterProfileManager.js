@@ -46,7 +46,9 @@ class CharacterProfileManager {
   }
 }
 
-// Crear una instancia de la clase y inicializarla
-const repoUrl = 'https://api.github.com/repos/arion-j/Novel/contents/Personajes';
-const characterProfileManager = new CharacterProfileManager('selectpj', 'resumepj', repoUrl);
-characterProfileManager.init();
+// Asegurarse de que el DOM esté completamente cargado antes de inicializar la clase
+document.addEventListener('DOMContentLoaded', () => {
+  const repoUrl = 'https://api.github.com/repos/arion-j/Novel/contents/Personajes';
+  const characterProfileManager = new CharacterProfileManager('selectpj', 'resumepj', repoUrl);
+  characterProfileManager.init();
+});
