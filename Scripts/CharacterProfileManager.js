@@ -16,13 +16,11 @@ export default class CharacterProfileManager {
   }
 
   // Método para cargar las carpetas de personajes desde el repositorio
-  async loadCharacterFolders() {
-    const response = await fetch(this.repoUrl);
-    const folders = (await response.json()).filter(item => item.type === 'dir');
-    this.characters = folders.map(folder => folder.name);
-
-    this.populateSelectElement();
-  }
+export async function getCharacterNames(repoUrl) {
+  const response = await fetch(repoUrl);
+  const folders = (await response.json()).filter(item => item.type === 'dir');
+  return folders.map(folder => folder.name);
+}
 
   // Método para llenar el elemento select con los nombres de los personajes
   populateSelectElement() {
