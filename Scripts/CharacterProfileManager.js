@@ -44,6 +44,11 @@ class CharacterProfileManager {
     const contentResponse = await fetch(characterContentUrl);
     this.resumeElement.innerHTML = await contentResponse.text();
   }
+
+  // Método para obtener solo los nombres de los personajes
+  getCharacterNames() {
+    return this.characters;
+  }
 }
 
 // Asegurarse de que el DOM esté completamente cargado antes de inicializar la clase
@@ -51,4 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const repoUrl = 'https://api.github.com/repos/arion-j/Novel/contents/Personajes';
   const characterProfileManager = new CharacterProfileManager('selectpj', 'resumepj', repoUrl);
   characterProfileManager.init();
+
+  // Obtener los nombres de los personajes
+  const characterNames = characterProfileManager.getCharacterNames();
+  console.log(characterNames);
 });
