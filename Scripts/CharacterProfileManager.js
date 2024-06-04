@@ -16,13 +16,13 @@ export default class CharacterProfileManager {
   }
 
   // Método para cargar las carpetas de personajes desde el repositorio
-async function getCharacterNames(repoUrl) {
-  const response = await fetch(repoUrl);
-  const folders = (await response.json()).filter(item => item.type === 'dir');
-  return folders.map(folder => folder.name);
-}
+  async loadCharacterFolders() {
+    const response = await fetch(this.repoUrl);
+    const folders = (await response.json()).filter(item => item.type === 'dir');
+    this.characters = folders.map(folder => folder.name);
 
-export { getCharacterNames };
+    this.populateSelectElement();
+  }
 
   // Método para llenar el elemento select con los nombres de los personajes
   populateSelectElement() {
@@ -51,13 +51,9 @@ export { getCharacterNames };
   }
 }
 
-// Asegurarse de que el DOM esté completamente cargado antes de inicializar la clase
-document.addEventListener('DOMContentLoaded', () => {
-  const repoUrl = 'https://api.github.com/repos/arion-j/Novel/contents/Personajes';
-  const characterProfileManager = new CharacterProfileManager('selectpj', 'resumepj', repoUrl);
-  characterProfileManager.init();
-
-  // Obtener los nombres de los personajes
-  const characterNames = characterProfileManager.getCharacterNames();
-  console.log(characterNames);
-});
+// Método para obtener los nombres de los personajes
+export async function getCharacterNames(repoUrl) {
+  const response = await fetch(repoUrl);
+  const folders = (await response.json()).filter(item => item.type === 'dir');
+  return folders.map(folder => folder.name);
+}
