@@ -1,4 +1,4 @@
-class CharacterProfileManager {
+export default class CharacterProfileManager {
   constructor(selectElementId, resumeElementId, repoUrl) {
     this.repoUrl = repoUrl;
     this.selectElement = document.getElementById(selectElementId);
