@@ -60,4 +60,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // Obtener los nombres de los personajes
   const characterNames = characterProfileManager.getCharacterNames();
   console.log(characterNames);
+  CharacterProfileManager.exports = {characterNames};
 });
