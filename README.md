@@ -1,6 +1,7 @@
 # Novela cooperativa
 ### Propuestas
-> Inicio con un personaje: Azzura 
+> Azzura
+Inicio con un personaje: Azzura 
 Historia de presentacion del personaje: Coordinadora Extrovertida y encantadora
 Conflicto donde el personaje tiene que ir a una mazmorra: su Antigua tutora va a buscarla 
 Resolucion con un gancho para saber que pasara despues: Decide seguír a su antigua tutora 
