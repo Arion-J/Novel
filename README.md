@@ -1,11 +1,10 @@
 # Novela cooperativa
 ### Propuestas
 - [ ] Azzura
-```Inicio con un personaje: Azzura```
-Historia de presentacion del personaje: Coordinadora Extrovertida y encantadora
-Conflicto donde el personaje tiene que ir a una mazmorra: su Antigua tutora va a buscarla 
-Resolucion con un gancho para saber que pasara despues: Decide seguír a su antigua tutora 
-En esta posibilidad su habilidad es el encanto (¿poder de convencimiento? Puede conseguir las cosas por el puro "pretty privilege") 
+**Historia de presentacion del personaje:** Coordinadora Extrovertida y encantadora
+**Conflicto donde el personaje tiene que ir a una mazmorra:** su Antigua tutora va a buscarla 
+**Resolucion con un gancho para saber que pasara despues:** Decide seguír a su antigua tutora 
+**Habilidad** En esta posibilidad su habilidad es el encanto (¿poder de convencimiento? Puede conseguir las cosas por el puro "pretty privilege") 
 
 > Inicio con un personaje: Azzura 
 Historia de presentacion del personaje: Coordinadora controversial por su excéntrico actuar
