@@ -7,4 +7,5 @@
 - [ ] Primer Cap Gustavo
 - [ ] Primer Cap Paolo
 - [ ] Primer Cap Aurelia
-* los textos en azul son un link al issue donde se desarrolla
+
+*los textos en azul son un link al issue donde se desarrolla*
