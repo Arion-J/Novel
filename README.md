@@ -47,7 +47,7 @@ En esta posibilidad su habilidad es la determinación, en el caso ella puede ent
 
 - [ ] Gabriela
       
-> **#4:**  
+> **#1:**  
 Comerciante de amuletos de la suerte
 
 **Conflicto donde el personaje tiene que ir a una mazmorra:**  
@@ -61,7 +61,7 @@ En esta posibilidad su habilidad es la fuerza física ya que debe viajar con su 
 
 ---
 
-> **#5:**  
+> **#2:**  
 Comerciante experta en "esoterismo" Pokémon
 
 **Conflicto donde el personaje tiene que ir a una mazmorra:**  
@@ -75,7 +75,7 @@ A pesar de no tener bases científicas, su conocimiento está más orientado a "
 
 ---
 
-> **#6:**  
+> **#3:**  
 Comerciante charlatana
 
 **Conflicto donde el personaje tiene que ir a una mazmorra:**  
