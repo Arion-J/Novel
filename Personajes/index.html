@@ -170,24 +170,23 @@
                 characterNames.push(nameSpan.textContent);
             });
 
-            // Crear un formulario invisible para enviar los nombres a list.html
-            const form = document.createElement('form');
-            form.setAttribute('method', 'POST');
-            form.setAttribute('action', 'https://arion-j.github.io/Novel/Personajes/list.html');
-            form.setAttribute('target', '_blank'); // Abrir en una nueva pestaña
-
-            const inputNames = document.createElement('input');
-            inputNames.setAttribute('type', 'hidden');
-            inputNames.setAttribute('name', 'characterNames');
-            inputNames.setAttribute('value', JSON.stringify(characterNames));
-
-            form.appendChild(inputNames);
-            document.body.appendChild(form);
-
-            form.submit();
-
-            // Limpiar el formulario después del envío (opcional)
-            document.body.removeChild(form);
+            fetch('https://arion-j.github.io/Novel/Personajes/list.html', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ characterNames }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Hubo un problema al exportar los datos.');
+                }
+                alert('Los datos se exportaron correctamente.');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un problema al exportar los datos.');
+            });
         }
     </script>
 </body>
