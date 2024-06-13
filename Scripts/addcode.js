@@ -1,10 +1,25 @@
 document.addEventListener('DOMContentLoaded', async function() {
+  // Crear la estructura HTML del selector de código y el contenedor de visualización
+  const codeSelectorHtml = `
+    <div class="code-selector">
+      <label for="codeSelect">Selector de Código:</label>
+      <select id="codeSelect" multiple></select>
+      <button id="loadCodeBtn">Cargar Código</button>
+      <button id="clearCodeBtn">Limpiar Código</button>
+    </div>
+    <div id="codeDisplay" class="code-container"></div>
+  `;
+
+  // Agregar la estructura HTML al cuerpo (body) de la página
+  document.body.innerHTML = codeSelectorHtml + document.body.innerHTML;
+
+  // Obtener referencias a elementos del DOM
   const codeSelect = document.getElementById('codeSelect');
   const loadCodeBtn = document.getElementById('loadCodeBtn');
   const clearCodeBtn = document.getElementById('clearCodeBtn');
   const codeDisplay = document.getElementById('codeDisplay');
 
-  // Cargar opciones de código disponibles
+  // Cargar opciones de código disponibles al cargar la página
   await loadCodeOptions();
 
   // Evento al hacer clic en "Cargar Código"
