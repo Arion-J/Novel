@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Personajes</title>
+    <style>
+        .character-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .character-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        .character-item input {
+            margin-right: 10px;
+        }
+        .character-item span {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Personajes</h1>
+    <input type="text" id="characterInput" placeholder="Añadir personaje">
+    <ul id="characterList" class="character-list">
+    </ul>
+
+    <script>
+        const characterInput = document.getElementById('characterInput');
+        const characterList = document.getElementById('characterList');
+
+        characterInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter' && characterInput.value.trim() !== '') {
+                addCharacter(characterInput.value.trim());
+                characterInput.value = '';
+            }
+        });
+
+        function addCharacter(name) {
+            const listItem = document.createElement('li');
+            listItem.className = 'character-item';
+
+            const nameSpan = document.createElement('span');
+            nameSpan.textContent = name;
+
+            nameSpan.addEventListener('dblclick', function() {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = nameSpan.textContent;
+
+                input.addEventListener('keypress', function(event) {
+                    if (event.key === 'Enter') {
+                        nameSpan.textContent = input.value.trim();
+                        listItem.replaceChild(nameSpan, input);
+                    }
+                });
+
+                input.addEventListener('blur', function() {
+                    nameSpan.textContent = input.value.trim();
+                    listItem.replaceChild(nameSpan, input);
+                });
+
+                listItem.replaceChild(input, nameSpan);
+                input.focus();
+            });
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Eliminar';
+
+            deleteButton.addEventListener('click', function() {
+                characterList.removeChild(listItem);
+            });
+
+            listItem.appendChild(nameSpan);
+            listItem.appendChild(deleteButton);
+            characterList.appendChild(listItem);
+        }
+    </script>
+</body>
+</html>
