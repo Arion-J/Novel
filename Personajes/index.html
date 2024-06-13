@@ -82,6 +82,20 @@
         .character-item button:hover {
             background-color: #c0392b;
         }
+
+        #exportButton {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #exportButton:hover {
+            background-color: #2980b9;
+        }
     </style>
 </head>
 <body>
@@ -89,16 +103,22 @@
     <input type="text" id="characterInput" placeholder="Añadir personaje">
     <ul id="characterList" class="character-list">
     </ul>
+    <button id="exportButton">Exportar</button>
 
     <script>
         const characterInput = document.getElementById('characterInput');
         const characterList = document.getElementById('characterList');
+        const exportButton = document.getElementById('exportButton');
 
         characterInput.addEventListener('keypress', function(event) {
             if (event.key === 'Enter' && characterInput.value.trim() !== '') {
                 addCharacter(characterInput.value.trim());
                 characterInput.value = '';
             }
+        });
+
+        exportButton.addEventListener('click', function() {
+            exportToAnotherPage();
         });
 
         function addCharacter(name) {
@@ -139,6 +159,35 @@
             listItem.appendChild(nameSpan);
             listItem.appendChild(deleteButton);
             characterList.appendChild(listItem);
+        }
+
+        function exportToAnotherPage() {
+            const characterItems = document.querySelectorAll('.character-item');
+            const characterNames = [];
+
+            characterItems.forEach(item => {
+                const nameSpan = item.querySelector('span');
+                characterNames.push(nameSpan.textContent);
+            });
+
+            // Crear un formulario invisible para enviar los nombres a list.html
+            const form = document.createElement('form');
+            form.setAttribute('method', 'POST');
+            form.setAttribute('action', 'https://arion-j.github.io/Novel/Personajes/list.html');
+            form.setAttribute('target', '_blank'); // Abrir en una nueva pestaña
+
+            const inputNames = document.createElement('input');
+            inputNames.setAttribute('type', 'hidden');
+            inputNames.setAttribute('name', 'characterNames');
+            inputNames.setAttribute('value', JSON.stringify(characterNames));
+
+            form.appendChild(inputNames);
+            document.body.appendChild(form);
+
+            form.submit();
+
+            // Limpiar el formulario después del envío (opcional)
+            document.body.removeChild(form);
         }
     </script>
 </body>
