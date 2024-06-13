@@ -1,4 +1,5 @@
-import { getCharacterNames } from 'https://raw.githubusercontent.com/Arion-J/Novel/main/Scripts/CharacterProfileManager.js';
-document.addEventListener('DOMContentLoaded', async () => {
-  console.log(characterNames);
+import { getCharacterNames } from './getCharacterNames.js';
+console.log("Nombres de personajes:");
+characterNames.forEach(name => {
+  console.log(name);
 });
